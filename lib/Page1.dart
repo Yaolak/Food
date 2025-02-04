@@ -18,16 +18,17 @@ class _Page1State extends State<Page1> {
   int dislikeCount = 0;
 
   void _launchYouTube() async {
-    final Uri url = Uri.parse('vnd.youtube://www.youtube.com/watch?v=JvBUqL6Mwyg');
-    
-    // ignore: deprecated_member_use
-    if (await canLaunch(url.toString())) {
-      // ignore: deprecated_member_use
-      await launch(url.toString(), forceSafariVC: false, forceWebView: false);
-    } else {
-      throw 'ไม่สามารถเปิด URL ได้: $url';
-    }
+  final Uri url = Uri.parse('https://www.youtube.com/watch?v=JvBUqL6Mwyg'); // ใช้ https:// แทน vnd.youtube://
+
+  // เช็คว่า URL นี้สามารถเปิดได้หรือไม่
+  if (await canLaunchUrl(url)) {
+    // เปิด URL
+    await launchUrl(url, mode: LaunchMode.externalApplication); // เปิดในแอป YouTube ถ้ามี
+  } else {
+    throw 'ไม่สามารถเปิด URL ได้: $url';
   }
+}
+
 
   // ข้อมูลเมนู
   final Map<String, String> menuDetails = {
