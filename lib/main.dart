@@ -12,6 +12,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,52 +38,52 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
- 
-  final List<Map<String, String>> foodItems = [
-    {
-      'image': 'pic/steak.jpg',
-      'icon': 'Icons.restaurant_menu', 
-      'title': 'สเต็กเนื้อ',
-    },
-    {
-      'image': 'pic/spaghetti.jpg',
-      'icon': 'Icons.pasta', 
-      'title': 'สปาเก็ตตี้',
-    },
-    {
-      'image': 'pic/Macaroni.jpg',
-      'icon': 'Icons.fastfood', 
-      'title': 'มักกะโรนีไส้กรอก',
-    },
-    {
-      'image': 'pic/shrimp.jpg',
-      'icon': 'Icons.seafood', 
-      'title': 'กุ้งอบชีส',
-    },
-  ];
+  HomeScreen({super.key});
+
+final List<Map<String, dynamic>> foodItems = [
+  {
+    'image': 'pic/steak.jpg',
+    'icon': Icons.restaurant_menu, 
+    'title': 'สเต็กเนื้อ',
+  },
+  {
+    'image': 'pic/spaghetti.jpg',
+    'icon': Icons.fastfood, 
+    'title': 'สปาเก็ตตี้',
+  },
+  {
+    'image': 'pic/Macaroni.jpg',
+    'icon': Icons.fastfood, 
+    'title': 'มักกะโรนีไส้กรอก',
+  },
+  {
+    'image': 'pic/shrimp.jpg',
+    'icon': Icons.fastfood, // เปลี่ยนจาก Icons.seafood เป็น Icons.fish
+    'title': 'กุ้งอบชีส',
+  },
+];
 
 
-  final List<Map<String, String>> snackItems = [
+  final List<Map<String, dynamic>> snackItems = [
     {
       'image': 'pic/bingsu.jpg',
-      'icon': 'Icons.icecream', 
+      'icon': Icons.icecream, 
       'title': 'บิงซูสตอเบอร์รี่',
     },
     {
       'image': 'pic/toast.jpg',
-      'icon': 'Icons.toast', 
+      'icon': Icons.icecream, 
       'title': 'ขนมปังปิ้ง',
     },
     {
       'image': 'pic/icecream.jpg',
-      'icon': 'Icons.icecream', 
+      'icon': Icons.icecream, 
       'title': 'ไอศกรีมรสนม',
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -93,7 +95,6 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center, 
           children: [
-            
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -102,7 +103,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             
-            Container(
+            SizedBox(
               height: screenHeight * 0.3, 
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -111,7 +112,6 @@ class HomeScreen extends StatelessWidget {
                   final item = foodItems[index];
                   return GestureDetector(
                     onTap: () {
-                   
                       Navigator.pushNamed(context, '/page${index + 1}');
                     },
                     child: Center( 
@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                         elevation: 8.0,
                         margin: EdgeInsets.symmetric(horizontal: 12.0),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                        child: Container(
+                        child: SizedBox(
                           width: screenWidth * 0.6, 
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center, 
@@ -131,23 +131,19 @@ class HomeScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                               SizedBox(height: 12),
-                            
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                 
                                   IconButton(
                                     onPressed: () {
-                                      
                                       Navigator.pushNamed(context, '/page${index + 1}');
                                     },
                                     icon: Icon(
-                                      Icons.restaurant_menu, 
+                                      item['icon'], 
                                       size: 24, 
                                       color: Colors.blue,
                                     ),
                                   ),
-                              
                                   Text(
                                     item['title']!,
                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -176,7 +172,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             
-            Container(
+            SizedBox(
               height: screenHeight * 0.3, 
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -185,7 +181,6 @@ class HomeScreen extends StatelessWidget {
                   final item = snackItems[index];
                   return GestureDetector(
                     onTap: () {
-                     
                       Navigator.pushNamed(context, '/page${index + 5}');
                     },
                     child: Center( 
@@ -193,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                         elevation: 8.0,
                         margin: EdgeInsets.symmetric(horizontal: 12.0),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                        child: Container(
+                        child: SizedBox(
                           width: screenWidth * 0.6,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center, 
@@ -205,23 +200,19 @@ class HomeScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                               ),
                               SizedBox(height: 12),
-                              
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                 
                                   IconButton(
                                     onPressed: () {
-                                     
                                       Navigator.pushNamed(context, '/page${index + 5}');
                                     },
                                     icon: Icon(
-                                      Icons.icecream, 
+                                      item['icon'], 
                                       size: 24,
                                       color: Colors.blue,
                                     ),
                                   ),
-                                  
                                   Text(
                                     item['title']!,
                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'Page1.dart';
 import 'Page2.dart';
-import 'Page3.dart';  
-import 'Page4.dart';  
-import 'Page5.dart';  
-import 'Page6.dart';  
-import 'Page7.dart'; 
+import 'Page3.dart';
+import 'Page4.dart';
+import 'Page5.dart';
+import 'Page6.dart';
+import 'Page7.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: '/',  // หน้าเริ่มต้น
+      initialRoute: '/', // หน้าเริ่มต้น
       routes: {
         // เส้นทางเริ่มต้น "/"
         '/page1': (context) => Page1(
