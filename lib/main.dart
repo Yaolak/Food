@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
         '/page3': (context) => Page3(title: 'มักกะโรนี'),
         '/page4': (context) => Page4(title: 'กุ้งอบชีส'),
         '/page5': (context) => Page5(title: 'บิงซูสตอเบอร์รี่'),
-        '/page6': (context) => Page6(title: 'ขนมปังปิ้ง'),
-        '/page7': (context) => Page7(title: 'ไอศกรีมรสนม'),
+        '/page6': (context) => (title: 'ขนมปังปิ้ง'),
+        '/page7': () => Page7(title: 'ไอศกรีมรสนม'),
       },
     );
   }
