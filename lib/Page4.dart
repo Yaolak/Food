@@ -1,14 +1,12 @@
-// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Page4 extends StatefulWidget {
-  const Page4({super.key, required this.title});
+  Page4({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  // ignore: library_private_types_in_public_api
   _Page4State createState() => _Page4State();
 }
 
@@ -18,12 +16,9 @@ class _Page4State extends State<Page4> {
 
   // ฟังก์ชันเปิด YouTube
   void _launchYouTube() async {
-    final Uri url =
-        Uri.parse('vnd.youtube://youtu.be/wdbJ2yplv4g?si=6u0UJjhWko0pedbr');
+    final Uri url = Uri.parse('vnd.youtube://youtu.be/wdbJ2yplv4g?si=6u0UJjhWko0pedbr');
 
-    // ignore: deprecated_member_use
     if (await canLaunch(url.toString())) {
-      // ignore: deprecated_member_use
       await launch(url.toString(), forceSafariVC: false, forceWebView: false);
     } else {
       // Fallback to open in a browser if the YouTube app is not installed
@@ -35,8 +30,7 @@ class _Page4State extends State<Page4> {
   final Map<String, String> menuDetails = {
     'title': 'กุ้งอบชีส',
     'image': 'pic/shrimp.jpg',
-    'description':
-        'กุ้งเนื้อสดอบชีสละมุน\n\nวิธีทำกุ้งเนื้อสดอบชีสละมุน\n1 ผสมครีมชีส มายองเนส กระเทียม และชีสขูดให้เข้ากัน\n 2 วางกุ้งในถาดอบ ทาซอสชีสให้ทั่วกุ้ง \n 3 อบที่อุณหภูมิ 180°C ประมาณ 10-15 นาที หรือจนชีสละลายและกุ้งสุก\n 4 ตกแต่งด้วยผักชีหรือใบโหระพา',
+    'description': 'กุ้งเนื้อสดอบชีสละมุน\n\nวิธีทำกุ้งเนื้อสดอบชีสละมุน\n1 ผสมครีมชีส มายองเนส กระเทียม และชีสขูดให้เข้ากัน\n 2 วางกุ้งในถาดอบ ทาซอสชีสให้ทั่วกุ้ง \n 3 อบที่อุณหภูมิ 180°C ประมาณ 10-15 นาที หรือจนชีสละลายและกุ้งสุก\n 4 ตกแต่งด้วยผักชีหรือใบโหระพา',
     'price': '190 บาท',
   };
 
@@ -64,8 +58,7 @@ class _Page4State extends State<Page4> {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.popUntil(
-                  context, (route) => route.isFirst); // กลับไปยังหน้าหลัก
+              Navigator.popUntil(context, (route) => route.isFirst);  // กลับไปยังหน้าหลัก
             },
           ),
         ],
@@ -80,7 +73,7 @@ class _Page4State extends State<Page4> {
                 // ปุ่มไปยังหน้าอื่น
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/page5'); // ไปยังหน้า page5
+                    Navigator.pushNamed(context, '/page5');  // ไปยังหน้า page5
                   },
                   child: Text('ไปหน้าที่ห้า'),
                 ),
@@ -95,10 +88,8 @@ class _Page4State extends State<Page4> {
                 SizedBox(height: 10),
                 Image.asset(
                   menuDetails['image']!,
-                  width: MediaQuery.of(context).size.width *
-                      0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
-                  height: MediaQuery.of(context).size.width *
-                      0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  width: MediaQuery.of(context).size.width * 0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  height: MediaQuery.of(context).size.width * 0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 10),
@@ -143,7 +134,7 @@ class _Page4State extends State<Page4> {
 
                 // ปุ่มเปิด YouTube
                 ElevatedButton(
-                  onPressed: _launchYouTube, // เมื่อกดปุ่มจะเปิด YouTube
+                  onPressed: _launchYouTube,  // เมื่อกดปุ่มจะเปิด YouTube
                   child: Text('เปิด YouTube'),
                 ),
               ],
@@ -160,8 +151,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

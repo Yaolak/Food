@@ -1,15 +1,12 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Page1 extends StatefulWidget {
-  const Page1({super.key, required this.title});
+  Page1({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  // ignore: library_private_types_in_public_api
   _Page1State createState() => _Page1State();
 }
 
@@ -18,12 +15,9 @@ class _Page1State extends State<Page1> {
   int dislikeCount = 0;
 
   void _launchYouTube() async {
-    final Uri url =
-        Uri.parse('vnd.youtube://www.youtube.com/watch?v=JvBUqL6Mwyg');
-
-    // ignore: deprecated_member_use
+    final Uri url = Uri.parse('vnd.youtube://www.youtube.com/watch?v=JvBUqL6Mwyg');
+    
     if (await canLaunch(url.toString())) {
-      // ignore: deprecated_member_use
       await launch(url.toString(), forceSafariVC: false, forceWebView: false);
     } else {
       throw 'ไม่สามารถเปิด URL ได้: $url';
@@ -34,8 +28,7 @@ class _Page1State extends State<Page1> {
   final Map<String, String> menuDetails = {
     'title': 'สเต็กเนื้อ',
     'image': 'pic/steak.jpg',
-    'description':
-        'สเต็กเนื้อ (Wagyu Angus Shoulder Steak) \n\n วิธีทำสเต็กสันไหล่เนื้อวากิวแองกัส \n 1 เตรียมเนื้อ: ทิ้งเนื้อไว้ที่อุณหภูมิห้อง 15-20 นาที และปรุงรสด้วยเกลือและพริกไทย \n 2 ย่าง: ใช้กระทะร้อน ใส่น้ำมันแล้วย่างเนื้อ 3-4 นาทีต่อด้าน (ตามความชอบ) \n 3 พักเนื้อ: ให้เนื้อพัก 5-10 นาทีหลังย่าง \n 4 เสิร์ฟ: เสิร์ฟพร้อมมันฝรั่งหรือผักย่างและซอสตามชอบ',
+    'description': 'สเต็กเนื้อ (Wagyu Angus Shoulder Steak) \n\n วิธีทำสเต็กสันไหล่เนื้อวากิวแองกัส \n 1 เตรียมเนื้อ: ทิ้งเนื้อไว้ที่อุณหภูมิห้อง 15-20 นาที และปรุงรสด้วยเกลือและพริกไทย \n 2 ย่าง: ใช้กระทะร้อน ใส่น้ำมันแล้วย่างเนื้อ 3-4 นาทีต่อด้าน (ตามความชอบ) \n 3 พักเนื้อ: ให้เนื้อพัก 5-10 นาทีหลังย่าง \n 4 เสิร์ฟ: เสิร์ฟพร้อมมันฝรั่งหรือผักย่างและซอสตามชอบ',
     'price': '150 บาท',
   };
 
@@ -63,7 +56,7 @@ class _Page1State extends State<Page1> {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.pop(context); // กลับไปหน้าหลัก
+              Navigator.pop(context);  // กลับไปหน้าหลัก
             },
           ),
         ],
@@ -78,7 +71,7 @@ class _Page1State extends State<Page1> {
                 // ปุ่มไปยังหน้าอื่น
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/page2'); // ไปยังหน้า page2
+                    Navigator.pushNamed(context, '/page2');  // ไปยังหน้า page2
                   },
                   child: Text('ไปหน้าที่สอง'),
                 ),
@@ -93,10 +86,8 @@ class _Page1State extends State<Page1> {
                 SizedBox(height: 10),
                 Image.asset(
                   menuDetails['image']!,
-                  width: MediaQuery.of(context).size.width *
-                      0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
-                  height: MediaQuery.of(context).size.width *
-                      0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  width: MediaQuery.of(context).size.width * 0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  height: MediaQuery.of(context).size.width * 0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 10),
@@ -141,7 +132,7 @@ class _Page1State extends State<Page1> {
 
                 // ปุ่มเปิด YouTube
                 ElevatedButton(
-                  onPressed: _launchYouTube, // เมื่อกดปุ่มจะเปิด YouTube
+                  onPressed: _launchYouTube,  // เมื่อกดปุ่มจะเปิด YouTube
                   child: Text('เปิด YouTube'),
                 ),
               ],
@@ -158,8 +149,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

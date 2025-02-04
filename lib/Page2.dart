@@ -1,15 +1,12 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Page2 extends StatefulWidget {
-  const Page2({super.key, required this.title});
+  Page2({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  // ignore: library_private_types_in_public_api
   _Page2State createState() => _Page2State();
 }
 
@@ -19,12 +16,9 @@ class _Page2State extends State<Page2> {
 
   // ฟังก์ชันสำหรับเปิด URL
   void _launchYouTube() async {
-    final Uri url =
-        Uri.parse('vnd.youtube://youtu.be/bkMFerlrnUM?si=m5CprdD1z2qneFrG');
-
-    // ignore: deprecated_member_use
+    final Uri url = Uri.parse('vnd.youtube://youtu.be/bkMFerlrnUM?si=m5CprdD1z2qneFrG');
+  
     if (await canLaunch(url.toString())) {
-      // ignore: deprecated_member_use
       await launch(url.toString(), forceSafariVC: false, forceWebView: false);
     } else {
       // Fallback to open in a browser if the YouTube app is not installed
@@ -36,8 +30,7 @@ class _Page2State extends State<Page2> {
   final Map<String, String> menuDetails = {
     'title': 'สปาเก็ตตี้',
     'image': 'pic/spaghetti.jpg',
-    'description':
-        'สปาเก็ตตี้มะเขือเทศ \n\n วิธีทำสปาเก็ตตี้มะเขือเทศ \n 1 ต้มสปาเก็ตตี้ในน้ำเดือดจนสุกแล้วสะเด็ดน้ำ\n 2 ผัดกระเทียมและหอมใหญ่ในน้ำมันมะกอกจนหอม ใส่มะเขือเทศหั่นหรือซอสมะเขือเทศ ผัดจนเดือด \n 3 ใส่เส้นสปาเก็ตตี้ลงไปผัดกับซอสให้เข้ากัน\n 4 เสิร์ฟโรยใบโหระพาและชีสพาร์มีซาน',
+    'description': 'สปาเก็ตตี้มะเขือเทศ \n\n วิธีทำสปาเก็ตตี้มะเขือเทศ \n 1 ต้มสปาเก็ตตี้ในน้ำเดือดจนสุกแล้วสะเด็ดน้ำ\n 2 ผัดกระเทียมและหอมใหญ่ในน้ำมันมะกอกจนหอม ใส่มะเขือเทศหั่นหรือซอสมะเขือเทศ ผัดจนเดือด \n 3 ใส่เส้นสปาเก็ตตี้ลงไปผัดกับซอสให้เข้ากัน\n 4 เสิร์ฟโรยใบโหระพาและชีสพาร์มีซาน',
     'price': '189 บาท',
   };
 
@@ -65,7 +58,7 @@ class _Page2State extends State<Page2> {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.pop(context); // กลับไปหน้าหลัก
+              Navigator.pop(context);  // กลับไปหน้าหลัก
             },
           ),
         ],
@@ -80,7 +73,7 @@ class _Page2State extends State<Page2> {
                 // ปุ่มไปยังหน้าอื่น
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/page3'); // ไปยังหน้า page3
+                    Navigator.pushNamed(context, '/page3');  // ไปยังหน้า page3
                   },
                   child: Text('ไปหน้าที่สาม'),
                 ),
@@ -95,10 +88,8 @@ class _Page2State extends State<Page2> {
                 SizedBox(height: 10),
                 Image.asset(
                   menuDetails['image']!,
-                  width: MediaQuery.of(context).size.width *
-                      0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
-                  height: MediaQuery.of(context).size.width *
-                      0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  width: MediaQuery.of(context).size.width * 0.8, // ปรับขนาดให้เหมาะสมกับหน้าจอ
+                  height: MediaQuery.of(context).size.width * 0.5, // ปรับขนาดให้เหมาะสมกับหน้าจอ
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 10),
@@ -143,7 +134,7 @@ class _Page2State extends State<Page2> {
 
                 // ปุ่มเปิด YouTube
                 ElevatedButton(
-                  onPressed: _launchYouTube, // เมื่อกดปุ่มจะเปิด YouTube
+                  onPressed: _launchYouTube,  // เมื่อกดปุ่มจะเปิด YouTube
                   child: Text('เปิด YouTube'),
                 ),
               ],
@@ -160,8 +151,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

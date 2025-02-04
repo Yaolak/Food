@@ -1,15 +1,12 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Page7 extends StatefulWidget {
-  const Page7({super.key, required this.title});
+  Page7({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  // ignore: library_private_types_in_public_api
   _Page7State createState() => _Page7State();
 }
 
@@ -19,12 +16,9 @@ class _Page7State extends State<Page7> {
 
   // ฟังก์ชันสำหรับเปิด URL
   void _launchYouTube() async {
-    final Uri url =
-        Uri.parse('vnd.youtube://youtu.be/HQZdrjtW4zU?si=fKtDSY7XMeIryqDx');
+    final Uri url = Uri.parse('vnd.youtube://youtu.be/HQZdrjtW4zU?si=fKtDSY7XMeIryqDx');
 
-    // ignore: deprecated_member_use
     if (await canLaunch(url.toString())) {
-      // ignore: deprecated_member_use
       await launch(url.toString(), forceSafariVC: false, forceWebView: false);
     } else {
       // Fallback to open in a browser if the YouTube app is not installed
@@ -36,8 +30,7 @@ class _Page7State extends State<Page7> {
   final Map<String, String> menuDetails = {
     'title': 'ไอศครีมนม',
     'image': 'pic/icecream.jpg', // ใช้ URL ของภาพหรือจัดเก็บใน assets
-    'description':
-        'ขนมปังปิ้งกรอบราดนม \n\n วิธีทํา\n 1 ปิ้งขนมปังให้กรอบ \n 2 ทาเนยบนขนมปังที่ปิ้งแล้ว\n 3 ผสมนมข้นหวานและนมสดเข้าด้วยกัน แล้วราดลงบนขนมปัง',
+    'description': 'ขนมปังปิ้งกรอบราดนม \n\n วิธีทํา\n 1 ปิ้งขนมปังให้กรอบ \n 2 ทาเนยบนขนมปังที่ปิ้งแล้ว\n 3 ผสมนมข้นหวานและนมสดเข้าด้วยกัน แล้วราดลงบนขนมปัง',
     'price': '100 บาท',
   };
 
@@ -67,15 +60,13 @@ class _Page7State extends State<Page7> {
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {
-              Navigator.popUntil(
-                  context, (route) => route.isFirst); // กลับไปยังหน้าหลัก
+              Navigator.popUntil(context, (route) => route.isFirst);  // กลับไปยังหน้าหลัก
             },
           ),
         ],
       ),
       body: Center(
-        child: SingleChildScrollView(
-          // Make the content scrollable
+        child: SingleChildScrollView( // Make the content scrollable
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -85,7 +76,7 @@ class _Page7State extends State<Page7> {
                 // Navigate to the home page button
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/');
+                    Navigator.pushNamed(context, '/');  
                   },
                   child: Text('ไปหน้าแรก'),
                 ),
@@ -101,10 +92,8 @@ class _Page7State extends State<Page7> {
                 // Image section with dynamic sizing based on screen width and height
                 Image.asset(
                   menuDetails['image']!,
-                  width:
-                      screenWidth * 0.6, // Dynamic width (60% of screen width)
-                  height: screenHeight *
-                      0.3, // Dynamic height (30% of screen height)
+                  width: screenWidth * 0.6, // Dynamic width (60% of screen width)
+                  height: screenHeight * 0.3, // Dynamic height (30% of screen height)
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 10),
@@ -152,8 +141,7 @@ class _Page7State extends State<Page7> {
 
                 // Button to open YouTube
                 ElevatedButton(
-                  onPressed:
-                      _launchYouTube, // When pressed, it will open YouTube
+                  onPressed: _launchYouTube,  // When pressed, it will open YouTube
                   child: Text('เปิด YouTube'),
                 ),
               ],
@@ -170,8 +158,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
